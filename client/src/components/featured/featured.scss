@@ -58,6 +58,9 @@
         &.play {
           background-color: white;
           color: var(--main-color);
+          &:hover {
+            background-color: #cccece;
+          }
         }
         &.more {
           background: rgba(gray, 0.3);
