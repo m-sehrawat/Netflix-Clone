@@ -42,10 +42,7 @@ const List2 = () => {
   return (
     <div className="list">
       <span className="listTitle"> Multiple items </span>
-      <Slider
-        {...settings}
-        // style={{ width: `95%`, margin: 'auto', color: 'white' }}
-      >
+      <Slider {...settings}>
         <ListItem />
         <ListItem />
         <ListItem />
