@@ -1,12 +1,17 @@
 import Slider from 'react-slick';
 import 'slick-carousel/slick/slick.css';
 import 'slick-carousel/slick/slick-theme.css';
-import { ArrowBackIos, ArrowForwardIos } from '@mui/icons-material';
+import {
+  ArrowBackIosOutlined,
+  ArrowForwardIosOutlined,
+} from '@mui/icons-material';
+import ListItem from '../listItem/ListItem';
+import './list2.scss';
 
 function SampleNextArrow(props) {
   const { className, style, onClick } = props;
   return (
-    <ArrowForwardIos
+    <ArrowForwardIosOutlined
       className={className}
       style={{ ...style, display: 'block', color: 'white' }}
       onClick={onClick}
@@ -16,7 +21,7 @@ function SampleNextArrow(props) {
 function SamplePrevArrow(props) {
   const { className, style, onClick } = props;
   return (
-    <ArrowBackIos
+    <ArrowBackIosOutlined
       className={className}
       style={{ ...style, display: 'block', color: 'white' }}
       onClick={onClick}
@@ -29,45 +34,30 @@ const List2 = () => {
     dots: true,
     infinite: true,
     speed: 500,
-    slidesToShow: 4,
-    slidesToScroll: 4,
+    slidesToShow: 6,
+    slidesToScroll: 6,
     nextArrow: <SampleNextArrow />,
     prevArrow: <SamplePrevArrow />,
   };
   return (
-    <div>
-      <h2> Multiple items </h2>
+    <div className="list">
+      <span className="listTitle"> Multiple items </span>
       <Slider
         {...settings}
-        style={{ width: `95%`, margin: 'auto', color: 'white' }}
+        // style={{ width: `95%`, margin: 'auto', color: 'white' }}
       >
-        <div>
-          <h3>1</h3>
-        </div>
-        <div>
-          <h3>2</h3>
-        </div>
-        <div>
-          <h3>3</h3>
-        </div>
-        <div>
-          <h3>4</h3>
-        </div>
-        <div>
-          <h3>5</h3>
-        </div>
-        <div>
-          <h3>6</h3>
-        </div>
-        <div>
-          <h3>7</h3>
-        </div>
-        <div>
-          <h3>8</h3>
-        </div>
-        <div>
-          <h3>9</h3>
-        </div>
+        <ListItem />
+        <ListItem />
+        <ListItem />
+        <ListItem />
+        <ListItem />
+        <ListItem />
+        <ListItem />
+        <ListItem />
+        <ListItem />
+        <ListItem />
+        <ListItem />
+        <ListItem />
       </Slider>
     </div>
   );
