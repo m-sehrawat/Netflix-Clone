@@ -15,6 +15,9 @@
   &:hover {
     width: 325px;
     height: 300px;
+    -webkit-box-shadow: 10px 10px 11px -7px rgba(0, 0, 0, 0.41);
+    -moz-box-shadow: 10px 10px 11px -7px rgba(0, 0, 0, 0.41);
+    box-shadow: 10px 10px 11px -7px rgba(0, 0, 0, 0.41);
     img {
       height: 140px;
     }

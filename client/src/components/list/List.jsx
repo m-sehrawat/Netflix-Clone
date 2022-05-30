@@ -11,7 +11,7 @@ const List = () => {
   const listRef = useRef();
 
   //bullshit code from stackoverflow
-  //use Library ffs
+  //use (React -slick)
   const handleClick = direction => {
     let distance = listRef.current.getBoundingClientRect().x - 50;
     if (direction === 'left' && slideNumber > 0) {
