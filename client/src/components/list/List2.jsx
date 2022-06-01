@@ -31,17 +31,19 @@ function SamplePrevArrow(props) {
 
 const List2 = () => {
   const settings = {
-    dots: true,
+    className: 'slider variable-width',
+    dots: false,
     infinite: true,
-    speed: 500,
+    speed: 1000,
     slidesToShow: 6,
     slidesToScroll: 6,
+    adaptiveHeight: true,
     nextArrow: <SampleNextArrow />,
     prevArrow: <SamplePrevArrow />,
   };
   return (
-    <div className="list">
-      <span className="listTitle"> Multiple items </span>
+    <div className="list2">
+      <span className="listTitle2"> Multiple items </span>
       <Slider {...settings}>
         <ListItem />
         <ListItem />
