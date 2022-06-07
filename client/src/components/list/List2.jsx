@@ -35,9 +35,9 @@ const List2 = () => {
     dots: false,
     infinite: true,
     speed: 1000,
-    slidesToShow: 6,
-    slidesToScroll: 6,
-    adaptiveHeight: true,
+    slidesToShow: 3,
+    slidesToScroll: 3,
+    // adaptiveHeight: true,
     nextArrow: <SampleNextArrow />,
     prevArrow: <SamplePrevArrow />,
   };

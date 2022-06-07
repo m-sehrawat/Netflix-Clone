@@ -11,7 +11,7 @@ const Home = () => {
       <Featured type="movie" />
       <List />
       <List2 />
-      {/* <List2 /> */}
+      <List2 />
     </div>
   );
 };
