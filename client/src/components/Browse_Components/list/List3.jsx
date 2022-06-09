@@ -4,9 +4,9 @@ import { Pagination, Navigation } from 'swiper';
 import React, { useRef, useState } from 'react';
 
 // Import Swiper styles
-// import 'swiper/css';
-// import 'swiper/css/pagination';
-// import 'swiper/css/navigation';
+import 'swiper/css';
+import 'swiper/css/pagination';
+import 'swiper/css/navigation';
 
 import './list3.scss';
 
