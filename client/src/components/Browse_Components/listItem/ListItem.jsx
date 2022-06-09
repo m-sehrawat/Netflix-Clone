@@ -4,7 +4,7 @@ import {
   ThumbDownOutlined,
   AddCircleOutline,
 } from '@mui/icons-material';
-import './listItem.scss';
+import './listItemBetter.scss';
 import { useState } from 'react';
 
 const ListItem = () => {
