@@ -8,11 +8,12 @@ import './browse.scss';
 const Browse = () => {
   return (
     <div className="browse">
-      {/* <Navbar /> */}
-      {/* <Featured type="movie" /> */}
+      <Navbar />
+      <Featured type="movie" />
       {/* <List /> */}
-      {/* <List2 /> */}
-      <List3 />
+      <List2 />
+      <List2 />
+      {/* <List3 /> */}
     </div>
   );
 };

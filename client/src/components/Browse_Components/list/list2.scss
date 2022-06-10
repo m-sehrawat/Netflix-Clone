@@ -36,7 +36,6 @@
 //   }
 // }
 .list2 {
-  // border: 1px dotted pink;
   margin-top: 50px;
   width: 100%;
   .listTitle2 {
@@ -44,6 +43,9 @@
     font-size: 20px;
     font-weight: 600;
     margin-left: 50px;
+  }
+  .slick-list {
+    overflow: visible;
   }
   .slick-slider {
     margin: 10px 40px;
