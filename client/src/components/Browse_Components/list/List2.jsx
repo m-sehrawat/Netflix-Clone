@@ -52,6 +52,9 @@ const List2 = () => {
         <ListItem />
         <ListItem />
         <ListItem />
+        <ListItem />
+        <ListItem />
+        <ListItem />
       </Slider>
     </div>
   );
