@@ -7,6 +7,7 @@ import {
 } from '@mui/icons-material';
 import ListItem from '../listItem/ListItem';
 import './list2.scss';
+import '../listItem/listItem.scss';
 
 function SampleNextArrow(props) {
   const { className, style, onClick } = props;
@@ -45,12 +46,6 @@ const List2 = () => {
     <div className="list2">
       <span className="listTitle2"> Multiple items </span>
       <Slider {...settings}>
-        <ListItem />
-        <ListItem />
-        <ListItem />
-        <ListItem />
-        <ListItem />
-        <ListItem />
         <ListItem />
         <ListItem />
         <ListItem />
