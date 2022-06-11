@@ -1,8 +1,7 @@
 import Navbar from '../../components/Browse_Components/navbar/Navbar';
 import Featured from '../../components/Browse_Components/featured/Featured';
-import List from '../../components/Browse_Components/list/List';
 import List2 from '../../components/Browse_Components/list/List2';
-import List3 from '../../components/Browse_Components/list/List3';
+import Footer from '../../components/Browse_Components/footer/Footer';
 import './browse.scss';
 
 const Browse = () => {
@@ -10,10 +9,9 @@ const Browse = () => {
     <div className="browse">
       <Navbar />
       <Featured type="movie" />
-      {/* <List /> */}
       <List2 />
       <List2 />
-      {/* <List3 /> */}
+      <Footer />
     </div>
   );
 };

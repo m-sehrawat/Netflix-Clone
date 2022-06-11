@@ -7,9 +7,9 @@ import Watch from './pages/Watch/Watch';
 function App() {
   return (
     <div>
-      {/* <Browse /> */}
+      <Browse />
       {/* <Login /> */}
-      <Watch />
+      {/* <Watch /> */}
     </div>
   );
 }
