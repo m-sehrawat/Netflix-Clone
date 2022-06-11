@@ -1,0 +1,41 @@
+.footer {
+  color: white;
+  width: 850px;
+  margin: auto;
+  margin-top: 50px;
+  .icons {
+    display: flex;
+    font-size: 25px;
+    gap: 40px;
+    cursor: pointer;
+  }
+  .links {
+    margin-top: 10px;
+    display: grid;
+    grid-template-columns: auto auto auto auto;
+    justify-content: space-between;
+    span {
+      padding: 10px;
+      color: gray;
+      cursor: pointer;
+      &:hover {
+        text-decoration: underline;
+        text-underline-offset: 5px;
+      }
+    }
+  }
+  .service {
+    color: gray;
+    margin-top: 30px;
+    border: 1px solid white;
+    padding: 5px 10px;
+    width: max-content;
+    &:hover {
+      color: white;
+    }
+  }
+  .copyright {
+    color: gray;
+    margin-top: 30px;
+  }
+}
