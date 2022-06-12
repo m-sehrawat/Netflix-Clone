@@ -5,7 +5,6 @@ import { Landing } from "../pages/Landing/Landing";
 import MyAccount from '../pages/MyAccount/MyAccount';
 
 export const Router = () => {
-
     return (
         <>
             <Routes>

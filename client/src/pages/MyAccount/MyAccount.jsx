@@ -2,6 +2,7 @@ import React from 'react';
 import './myAccount.scss';
 import ArrowDropDownIcon from '@mui/icons-material/ArrowDropDown';
 import Member from '../../components/MyAccount/MemberBill/Member';
+import Plan from '../../components/MyAccount/Plan/Plan';
 
 const MyAccount = () => {
   return (
@@ -26,6 +27,9 @@ const MyAccount = () => {
         </div>
         <hr />
         <Member />
+        <hr />
+        <Plan />
+        <hr />
       </div>
     </div>
   );
