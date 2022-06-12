@@ -1,6 +1,6 @@
 import { Box, Button, Heading, Input, Text, useToast } from "@chakra-ui/react";
 import { useState } from "react";
-import { useDispatch } from "react-redux";
+import { shallowEqual, useDispatch, useSelector } from "react-redux";
 import { netflixBackgroundImage } from "../../Constants/Images";
 import { getLoginSuccess } from "../../redux/auth/actions";
 import { loginValidator } from "../../utils/loginValidator";
@@ -21,7 +21,7 @@ export const Login = () => {
         if (!result.status) {
             notify(toast, result.message, 'error');
         } else {
-            dispatch(getLoginSuccess(login))
+            dispatch(getLoginSuccess(login, toast))
         }
 
 
