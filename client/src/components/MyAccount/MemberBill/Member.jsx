@@ -25,11 +25,11 @@ const Member = () => {
         gridTemplateColumns="auto auto"
       >
         <span>sayakmohanta1998@gmail.com</span>
-        <span className="right">Change email</span>
+        <span className="r">Change email</span>
         <span>Password : ********</span>
-        <span className="right">Change Password</span>
+        <span className="r">Change Password</span>
         <span>Phone : 8900741377</span>
-        <span className="right">Change Phone Number</span>
+        <span className="r">Change Phone Number</span>
       </GridItem>
       <GridItem
         colSpan={2}
@@ -39,9 +39,9 @@ const Member = () => {
         borderTop="1px solid gray"
       >
         <span className="card"> Dummy Card Number 9389</span>
-        <span className="right">Manage Payment Info</span>
+        <span className="r">Manage Payment Info</span>
         <span></span>
-        <span className="right">Billing Details</span>
+        <span className="r">Billing Details</span>
       </GridItem>
       <GridItem
         colSpan={2}
@@ -51,8 +51,8 @@ const Member = () => {
         p={5}
         borderTop="1px solid gray"
       >
-        <span className="right">Redeem gift card or promo code</span>
-        <span className="right">Where to buy gift cards</span>
+        <span className="r">Redeem gift card or promo code</span>
+        <span className="r">Where to buy gift cards</span>
       </GridItem>
     </Grid>
   );
