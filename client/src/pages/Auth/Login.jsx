@@ -1,8 +1,9 @@
 import { Box, Button, Heading, Input, Text, useToast } from "@chakra-ui/react";
 import { useState } from "react";
 import { useDispatch } from "react-redux";
+import { Link } from "react-router-dom";
 import { netflixBackgroundImage } from "../../Constants/Images";
-import { getLoginSuccess} from "../../redux/auth/actions";
+import { getLoginSuccess } from "../../redux/auth/actions";
 import { loginValidator } from "../../utils/loginValidator";
 import { notify } from "../../utils/notify";
 
@@ -35,7 +36,9 @@ export const Login = () => {
                     <Button onClick={handleSubmit} bg={'#e50914'} h={'50px'} _hover={{ bg: '#e50914' }} fontWeight={600} color={'white'} w={'100%'}>Sign In</Button>
                     <Box mt={'60px'} fontSize={'18px'}>
                         <Text display={'inline'} color={'#64605b'}>New to Netflix? </Text>
-                        <Text display={'inline'} color={'white'}>Sign up now.</Text>
+                        <Link to={'/landing'}>
+                            <Text display={'inline'} color={'white'}>Sign up now.</Text>
+                        </Link>
                     </Box>
                 </Box>
             </Box>

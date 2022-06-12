@@ -1,6 +1,7 @@
 import { Box, Button, Heading, Input, Text } from "@chakra-ui/react";
 import { netflixBackgroundImage } from "../../Constants/Images";
 import { AiOutlineRight } from "react-icons/ai";
+import { Link } from "react-router-dom";
 
 export const Landing = () => {
 
@@ -11,7 +12,10 @@ export const Landing = () => {
 
                     <Box display={'flex'} justifyContent={'space-between'} px={'50px'} py={'20px'}>
                         <Heading color={'#e50914'}>NETFLIX</Heading>
-                        <Button bg={'#e50914'} color={'white'} _hover={{ bg: '#e50914' }}>Sign In</Button>
+                        <Link to={'/login'}>
+                            <Button bg={'#e50914'} color={'white'} _hover={{ bg: '#e50914' }}>Sign In</Button>
+                        </Link>
+
                     </Box>
 
                     <Box maxW={'700px'} m={'20vh auto auto'} textAlign='center' color={'white'}>
