@@ -1,11 +1,15 @@
 import axios from "axios";
-import { setItem } from "../../utils/localStorage";
+import { removeItem, setItem } from "../../utils/localStorage";
 import { notify } from "../../utils/notify";
-import { GET_TOKEN_SUCCESS } from "./actionTypes";
+import { GET_TOKEN_SUCCESS, REMOVE_TOKEN_SUCCESS } from "./actionTypes";
 
 
 export const getTokenSuccess = (payload) => {
     return { type: GET_TOKEN_SUCCESS, payload };
+}
+
+export const removeTokenSuccess = () => {
+    return { type: REMOVE_TOKEN_SUCCESS };
 }
 
 
@@ -21,4 +25,12 @@ export const getLoginSuccess = (data, toast) => async (dispatch) => {
         console.log(err.response.data);
         notify(toast, err.response.data.message, 'error');
     }
+}
+
+
+export const getLogoutSuccess = (toast) => (dispatch) => {
+    removeItem('token');
+    removeItem('user');
+    dispatch(removeTokenSuccess());
+    notify(toast, 'Logout Successfully', 'success');
 }
