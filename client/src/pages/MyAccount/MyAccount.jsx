@@ -1,6 +1,7 @@
 import React from 'react';
 import './myAccount.scss';
 import ArrowDropDownIcon from '@mui/icons-material/ArrowDropDown';
+import Member from '../../components/MyAccount/MemberBill/Member';
 
 const MyAccount = () => {
   return (
@@ -24,7 +25,7 @@ const MyAccount = () => {
           <span>Member since February 2022</span>
         </div>
         <hr />
-        <div></div>
+        <Member />
       </div>
     </div>
   );
