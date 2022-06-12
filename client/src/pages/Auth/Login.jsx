@@ -27,7 +27,7 @@ export const Login = () => {
 
     return (
         <>
-            <Box minH={'100vh'} pt={'80px'} backgroundImage={netflixBackgroundImage}>
+            <Box minH={'100vh'} pt={'80px'} backgroundImage={netflixBackgroundImage} bgSize={'cover'}>
                 <Box m={'auto'} maxW={'450px'} bg={'blackAlpha.800'} h={'600px'} p={'70px'}>
                     <Heading color={'white'} mb={'30px'}>Sign In</Heading>
                     <Input onInput={handleInputChange} value={login.email} name="email" type={'email'} mb={'20px'} h={'50px'} color={'white'} bg={'#333333'} border={'none'} placeholder='Email' />
