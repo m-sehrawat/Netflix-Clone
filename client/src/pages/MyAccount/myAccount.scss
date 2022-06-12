@@ -1,0 +1,34 @@
+.account {
+  .navbarMin {
+    width: 100%;
+    color: white;
+    display: flex;
+    justify-content: space-between;
+    background-color: var(--main-color);
+    height: 70px;
+    padding: 20px 40px;
+    .profile {
+      display: flex;
+      gap: 10px;
+      img {
+        border-radius: 3px;
+      }
+    }
+  }
+  .details {
+    max-width: 1000px;
+    margin: auto;
+    margin-top: 30px;
+    .top1 {
+      display: flex;
+      gap: 50px;
+      align-items: center;
+      span {
+        font-weight: bold;
+        &:nth-child(1) {
+          font-size: 40px;
+        }
+      }
+    }
+  }
+}
