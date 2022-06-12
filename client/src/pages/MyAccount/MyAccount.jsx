@@ -3,6 +3,7 @@ import './myAccount.scss';
 import ArrowDropDownIcon from '@mui/icons-material/ArrowDropDown';
 import Member from '../../components/MyAccount/MemberBill/Member';
 import Plan from '../../components/MyAccount/Plan/Plan';
+import Settings from '../../components/MyAccount/Settings/Settings';
 
 const MyAccount = () => {
   return (
@@ -29,6 +30,8 @@ const MyAccount = () => {
         <Member />
         <hr />
         <Plan />
+        <hr />
+        <Settings />
         <hr />
       </div>
     </div>
