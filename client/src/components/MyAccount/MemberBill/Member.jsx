@@ -20,7 +20,6 @@ const Member = () => {
       </GridItem>
       <GridItem
         colSpan={2}
-        bg="papayawhip"
         display="grid"
         p={5}
         gridTemplateColumns="auto auto"
@@ -34,25 +33,26 @@ const Member = () => {
       </GridItem>
       <GridItem
         colSpan={2}
-        bg="papayawhip"
         display="grid"
         gridTemplateColumns="auto auto"
         p={5}
+        borderTop="1px solid gray"
       >
-        <span className="card"> .... .... .... 9389</span>
+        <span className="card"> Dummy Card Number 9389</span>
         <span className="right">Manage Payment Info</span>
+        <span></span>
         <span className="right">Billing Details</span>
       </GridItem>
       <GridItem
         colSpan={2}
-        bg="tomato"
         display="flex"
         flexDirection="column"
         textAlign="right"
         p={5}
+        borderTop="1px solid gray"
       >
-        <span>Redeem gift card or promo code</span>
-        <span>Where to buy gift cards</span>
+        <span className="right">Redeem gift card or promo code</span>
+        <span className="right">Where to buy gift cards</span>
       </GridItem>
     </Grid>
   );
