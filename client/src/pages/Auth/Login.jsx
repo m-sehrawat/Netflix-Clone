@@ -1,6 +1,8 @@
 import { Box, Button, Heading, Input, Text, useToast } from "@chakra-ui/react";
 import { useState } from "react";
+import { useDispatch } from "react-redux";
 import { netflixBackgroundImage } from "../../Constants/Images";
+import { getLoginSuccess } from "../../redux/auth/actions";
 import { loginValidator } from "../../utils/loginValidator";
 import { notify } from "../../utils/notify";
 
@@ -8,19 +10,21 @@ export const Login = () => {
 
     const [login, setLogin] = useState({ email: "", password: "" });
     const toast = useToast();
+    const dispatch = useDispatch();
 
     const handleInputChange = ({ target: { name, value } }) => {
         setLogin({ ...login, [name]: value });
     }
 
-    const handleSubmit = () => {
+    const handleSubmit = async () => {
         const result = loginValidator(login);
-        if(!result.status){
+        if (!result.status) {
             notify(toast, result.message, 'error');
         } else {
-            
+            dispatch(getLoginSuccess(login))
         }
-        console.log(login);
+
+
     }
 
     return (
