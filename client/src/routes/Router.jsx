@@ -8,6 +8,7 @@ export const Router = () => {
     <>
       <Routes>
         <Route path="/" element={<Browse />} />
+        <Route path="/browse" element={<Browse />} />
         <Route path="/MyAccount" element={<MyAccount />} />
         <Route path="/login" element={<Login />} />
       </Routes>
