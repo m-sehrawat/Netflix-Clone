@@ -1,6 +1,11 @@
 export const loginValidator = ({ email, password }) => {
 
-    if (email.length < 3) {
+    if (!email && !password) {
+        return {
+            status: false,
+            message: "Please enter email id & password"
+        };
+    } else if (email.length < 3) {
         return {
             status: false,
             message: "Please enter a valid email id"
