@@ -1,0 +1,13 @@
+.card {
+  font-size: 20px;
+  font-weight: 600;
+}
+.r {
+  text-align: right;
+  color: #0073e6;
+  &:hover {
+    cursor: pointer;
+    text-decoration: underline;
+    text-underline-offset: 3px;
+  }
+}

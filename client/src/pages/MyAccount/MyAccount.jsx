@@ -2,6 +2,9 @@ import React from 'react';
 import './myAccount.scss';
 import ArrowDropDownIcon from '@mui/icons-material/ArrowDropDown';
 import Member from '../../components/MyAccount/MemberBill/Member';
+import Plan from '../../components/MyAccount/Plan/Plan';
+import Settings from '../../components/MyAccount/Settings/Settings';
+import Footer from '../../components/Browse_Components/footer/Footer';
 
 const MyAccount = () => {
   return (
@@ -26,6 +29,12 @@ const MyAccount = () => {
         </div>
         <hr />
         <Member />
+        <hr />
+        <Plan />
+        <hr />
+        <Settings />
+        <hr />
+        <Footer />
       </div>
     </div>
   );

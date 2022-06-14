@@ -1,0 +1,25 @@
+.plan {
+  display: flex;
+  justify-content: space-between;
+  padding: 40px 0;
+  padding-right: 20px;
+  .quality {
+    color: gray;
+    font-size: 20px;
+  }
+  .qualityLogo {
+    font-weight: bold;
+    border: 2px solid black;
+    padding: 7px;
+    border-radius: 5px;
+    margin-left: 10px;
+  }
+  span:nth-of-type(3) {
+    color: #0073e6;
+    &:hover {
+      cursor: pointer;
+      text-decoration: underline;
+      text-underline-offset: 3px;
+    }
+  }
+}
