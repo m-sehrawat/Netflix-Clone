@@ -1,7 +1,25 @@
 import { InfoOutlined, PlayArrow } from '@mui/icons-material';
 import './featured.scss';
+import { useState, useEffect } from 'react';
+import axios from '../../../API/axios';
+import requests from '../../../API/Requests';
 
 const Featured = ({ type }) => {
+  const [movie, setMovie] = useState([]);
+
+  useEffect(() => {
+    async function fetchData() {
+      const req = await axios.get(requests.fetchOriginals);
+      setMovie(
+        req.data.results[
+          Math.floor(Math.random() * req.data.results.length - 1)
+        ]
+      );
+      return req;
+    }
+    fetchData();
+  }, []);
+
   return (
     <div className="featured">
       {type && (
@@ -16,20 +34,15 @@ const Featured = ({ type }) => {
         </div>
       )}
       <img
-        src="https://images.unsplash.com/photo-1522069394066-326005dc26b2?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1469&q=80"
+        src={`https://image.tmdb.org/t/p/original/${movie?.backdrop_path}`}
         alt=""
       />
       <div className="info">
         <img
-          src="https://s3.amazonaws.com/www-inside-design/uploads/2017/10/strangerthings_feature-810x810.jpg"
+          src={`https://image.tmdb.org/t/p/original/${movie?.poster_path}`}
           alt=""
         />
-        <span className="description">
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptatum,
-          expedita. Veritatis ipsa totam perferendis asperiores, repudiandae
-          possimus magni eos quibusdam consectetur corrupti maxime commodi
-          dolore. Ea et incidunt minima culpa!
-        </span>
+        <span className="description">{movie.overview}</span>
         <div className="buttons">
           <button className="play">
             <PlayArrow />

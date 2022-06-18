@@ -3,7 +3,7 @@ import React, { StrictMode } from 'react';
 import * as ReactDOM from 'react-dom/client';
 import App from './App';
 import 'swiper/css/bundle';
-import { BrowserRouter } from "react-router-dom";
+import { BrowserRouter } from 'react-router-dom';
 import { Provider as ReduxProvider } from 'react-redux';
 import { store } from './redux/store/store';
 import axios from 'axios';
@@ -14,13 +14,13 @@ const container = document.getElementById('root');
 const root = ReactDOM.createRoot(container);
 
 root.render(
-  <StrictMode>
-    <BrowserRouter>
+  // <StrictMode>
+  <BrowserRouter>
     <ChakraProvider>
       <ReduxProvider store={store}>
-      <App />
+        <App />
       </ReduxProvider>
     </ChakraProvider>
-    </BrowserRouter>
-  </StrictMode>
+  </BrowserRouter>
+  // </StrictMode>
 );
