@@ -15,10 +15,16 @@ const Featured = ({ type }) => {
           Math.floor(Math.random() * req.data.results.length - 1)
         ]
       );
+      console.log(req);
       return req;
     }
     fetchData();
   }, []);
+  function textShorten(string, maxLength) {
+    return string?.length > maxLength
+      ? string.substring(0, maxLength) + ' ...'
+      : string;
+  }
 
   return (
     <div className="featured">
@@ -42,7 +48,8 @@ const Featured = ({ type }) => {
           src={`https://image.tmdb.org/t/p/original/${movie?.poster_path}`}
           alt=""
         />
-        <span className="description">{movie.overview}</span>
+        <span className="name">{movie.name}</span>
+        <span className="description">{textShorten(movie.overview, 150)}</span>
         <div className="buttons">
           <button className="play">
             <PlayArrow />

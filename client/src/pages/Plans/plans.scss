@@ -1,0 +1,41 @@
+.tabs {
+  margin: auto;
+  display: flex;
+  flex-direction: column;
+  max-width: 950px;
+  gap: 20px;
+  .header {
+    font-size: 40px;
+    font-weight: bold;
+  }
+  button {
+    border: 5px solid rgb(182, 182, 182);
+    width: 100%;
+    justify-content: space-between;
+    height: 100px;
+
+    span:nth-of-type(1) {
+      font-size: 20px;
+      font-weight: bold;
+      width: 100px;
+    }
+    span:nth-of-type(2) {
+      width: 70%;
+      font-size: 20px;
+      text-align: left;
+      padding-left: 20px;
+    }
+    span:nth-of-type(3) {
+      font-size: 17px;
+      font-weight: bold;
+      width: 100px;
+    }
+  }
+}
+
+.buttons {
+  padding: 20px;
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+}
