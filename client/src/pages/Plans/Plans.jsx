@@ -57,7 +57,7 @@ const Plans = () => {
             </div>
           </div>
         </TabList>
-        <div className="buttons">
+        <div className="toPayment">
           <Button colorScheme="blue">Continue</Button>
           <Button colorScheme="gray">Go Back</Button>
         </div>
