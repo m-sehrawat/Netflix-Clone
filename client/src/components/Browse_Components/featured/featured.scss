@@ -30,16 +30,26 @@
     width: 35%;
     position: absolute;
     left: 50px;
-    bottom: 100px;
+    bottom: 20px;
     color: white;
     display: flex;
     flex-direction: column;
 
     img {
-      width: 300px;
+      width: 250px;
+      // height: 250px;
+      // object-fit: cover;
+    }
+    .name {
+      font-size: 40px;
+      font-weight: bold;
+      padding: 15px 0;
+      width: 500px;
     }
     .description {
-      margin: 20px 0px;
+      margin-bottom: 20px;
+      font-size: 20px;
+      width: 500px;
     }
     .buttons {
       display: flex;
