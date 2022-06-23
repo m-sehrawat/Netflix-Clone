@@ -1,0 +1,16 @@
+.navbarMin {
+  width: 100%;
+  color: white;
+  display: flex;
+  justify-content: space-between;
+  background-color: var(--main-color);
+  height: 70px;
+  padding: 20px 40px;
+  .profile {
+    display: flex;
+    gap: 10px;
+    img {
+      border-radius: 3px;
+    }
+  }
+}

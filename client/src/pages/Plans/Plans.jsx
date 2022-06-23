@@ -2,10 +2,12 @@ import React from 'react';
 import { Tabs, TabList, Tab, Button, ButtonGroup } from '@chakra-ui/react';
 import './plans.scss';
 import Footer from '../../components/Browse_Components/footer/Footer';
+import NavbarMin from '../../components/MyAccount/NavabarMin/NavbarMin';
 
 const Plans = () => {
   return (
     <>
+      <NavbarMin />
       <Tabs variant="unstyled">
         <TabList>
           <div className="tabs">
@@ -14,7 +16,7 @@ const Plans = () => {
               <span>Mobile</span>
               <span>
                 Good video quality in SD (480p). Watch on any phone or tablet.
-                Computer and TV not
+                Computer and TV not.
               </span>
               <span>₹ 149/month</span>
             </Tab>

@@ -2,40 +2,67 @@ import { InfoOutlined, PlayArrow } from '@mui/icons-material';
 import './featured.scss';
 import { useState, useEffect } from 'react';
 import axios from '../../../API/axios';
-import requests from '../../../API/Requests';
+import { requests, API_KEY } from '../../../API/Requests';
 
 const Featured = ({ type }) => {
   const [movie, setMovie] = useState([]);
+  const [allGenre, setAllGenre] = useState([]);
+  const [genre, setGenre] = useState(0);
 
+  //Genre Request
+  useEffect(() => {
+    async function fetchGenre() {
+      const req = await axios.get(
+        `https://api.themoviedb.org/3/genre/movie/list?api_key=${API_KEY}&language=en-US`
+      );
+      setAllGenre(req.data.genres);
+    }
+    fetchGenre();
+  }, []);
+
+  //Based on Genre Request
   useEffect(() => {
     async function fetchData() {
-      const req = await axios.get(requests.fetchOriginals);
+      let request =
+        genre === 0 || genre === 'Genres'
+          ? requests.fetchOriginals
+          : `https://api.themoviedb.org/3/discover/movie?api_key=${API_KEY}&language=en-US&sort_by=popularity.desc&page=2&with_genres=${genre}`;
+      const req = await axios.get(request);
       setMovie(
         req.data.results[
           Math.floor(Math.random() * req.data.results.length - 1)
         ]
       );
-      console.log(req);
-      return req;
     }
     fetchData();
-  }, []);
+  }, [genre]);
+
   function textShorten(string, maxLength) {
     return string?.length > maxLength
       ? string.substring(0, maxLength) + ' ...'
       : string;
   }
 
+  function genreSelector(event) {
+    setGenre(event.target.value);
+  }
+
+  console.log(movie);
+
   return (
     <div className="featured">
       {type && (
         <div className="category">
           <span>{type === 'movie' ? 'Movies' : 'TV shows'}</span>
-          <select name="genre" id="genre">
+          <select name="genre" id="genre" onChange={genreSelector}>
             <option>Genres</option>
-            <option value="adventure">Adventure</option>
-            <option value="comedy">Comedy</option>
-            <option value="crime">Crime</option>
+            {allGenre.map(genre => {
+              return (
+                <option value={genre.id} key={genre.id}>
+                  {genre.name}
+                </option>
+              );
+            })}
           </select>
         </div>
       )}
@@ -48,7 +75,7 @@ const Featured = ({ type }) => {
           src={`https://image.tmdb.org/t/p/original/${movie?.poster_path}`}
           alt=""
         />
-        <span className="name">{movie.name}</span>
+        <span className="name">{movie.name || movie.title}</span>
         <span className="description">{textShorten(movie.overview, 150)}</span>
         <div className="buttons">
           <button className="play">
