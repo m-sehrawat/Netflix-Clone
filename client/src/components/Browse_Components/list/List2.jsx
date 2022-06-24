@@ -8,6 +8,9 @@ import {
 import ListItem from '../listItem/ListItem';
 import './list2.scss';
 import '../listItem/listItem.scss';
+import axios from 'axios';
+import { requests } from '../../../API/Requests';
+import { useEffect, useState } from 'react';
 
 function SampleNextArrow(props) {
   const { className, style, onClick } = props;
@@ -30,7 +33,9 @@ function SamplePrevArrow(props) {
   );
 }
 
-const List2 = () => {
+const List2 = props => {
+  const [type, setType] = useState('');
+  const [data, setData] = useState([]);
   const settings = {
     className: 'slider variable-width',
     dots: false,
@@ -42,19 +47,32 @@ const List2 = () => {
     nextArrow: <SampleNextArrow />,
     prevArrow: <SamplePrevArrow />,
   };
+  //Fetching Slider API
+  useEffect(() => {
+    if (props.type === 'trending') {
+      setType('Trending Now');
+      fetchData(requests.fetchTrending);
+    } else if (props.type === 'originals') {
+      setType('Netflix Originals');
+      fetchData(requests.fetchOriginals);
+    } else {
+      setType('Top Rated');
+      fetchData(requests.fetchTopRated);
+    }
+  }, []);
+
+  async function fetchData(url) {
+    const req = await axios.get(`https://api.themoviedb.org/3${url}`);
+    setData(req.data.results);
+  }
+
   return (
     <div className="list2">
-      <span className="listTitle2"> Multiple items </span>
+      <span className="listTitle2"> {type} </span>
       <Slider {...settings}>
-        <ListItem />
-        <ListItem />
-        <ListItem />
-        <ListItem />
-        <ListItem />
-        <ListItem />
-        <ListItem />
-        <ListItem />
-        <ListItem />
+        {data.map(elem => (
+          <ListItem key={elem.id} data={elem} />
+        ))}
       </Slider>
     </div>
   );
