@@ -49,49 +49,45 @@ const Featured = ({ type }) => {
   }
   console.log(genre);
   return (
-    <>
-      <div className="featured">
-        {type && (
-          <div className="category">
-            <span>{type === 'movie' ? 'Movies' : 'TV shows'}</span>
-            <select name="genre" id="genre" onChange={genreSelector}>
-              <option>Genres</option>
-              {allGenre.map(genre => {
-                return (
-                  <option value={genre.id} key={genre.id}>
-                    {genre.name}
-                  </option>
-                );
-              })}
-            </select>
-          </div>
-        )}
+    <div className="featured">
+      {type && (
+        <div className="category">
+          <span>{type === 'movie' ? 'Movies' : 'TV shows'}</span>
+          <select name="genre" id="genre" onChange={genreSelector}>
+            <option>Genres</option>
+            {allGenre.map(genre => {
+              return (
+                <option value={genre.id} key={genre.id}>
+                  {genre.name}
+                </option>
+              );
+            })}
+          </select>
+        </div>
+      )}
+      <img
+        src={`https://image.tmdb.org/t/p/original/${movie?.backdrop_path}`}
+        alt=""
+      />
+      <div className="info">
         <img
-          src={`https://image.tmdb.org/t/p/original/${movie?.backdrop_path}`}
+          src={`https://image.tmdb.org/t/p/original/${movie?.poster_path}`}
           alt=""
         />
-        <div className="info">
-          <img
-            src={`https://image.tmdb.org/t/p/original/${movie?.poster_path}`}
-            alt=""
-          />
-          <span className="name">{movie.name || movie.title}</span>
-          <span className="description">
-            {textShorten(movie.overview, 150)}
-          </span>
-          <div className="buttons">
-            <button className="play">
-              <PlayArrow />
-              <span>Play</span>
-            </button>
-            <button className="more">
-              <InfoOutlined />
-              <span>More Info</span>
-            </button>
-          </div>
+        <span className="name">{movie.name || movie.title}</span>
+        <span className="description">{textShorten(movie.overview, 150)}</span>
+        <div className="buttons">
+          <button className="play">
+            <PlayArrow />
+            <span>Play</span>
+          </button>
+          <button className="more">
+            <InfoOutlined />
+            <span>More Info</span>
+          </button>
         </div>
       </div>
-    </>
+    </div>
   );
 };
 

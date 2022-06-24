@@ -30,13 +30,13 @@
     width: 35%;
     position: absolute;
     left: 50px;
-    bottom: 20px;
+    bottom: 30px;
     color: white;
     display: flex;
     flex-direction: column;
 
     img {
-      width: 250px;
+      width: 200px;
       // height: 250px;
       // object-fit: cover;
     }
@@ -84,4 +84,19 @@
       }
     }
   }
+}
+.featured:after {
+  content: '';
+  position: absolute;
+  z-index: 1;
+  bottom: -10px;
+  left: 0;
+  pointer-events: none;
+  background-image: linear-gradient(
+    to bottom,
+    rgba(255, 255, 255, 0),
+    rgb(0, 0, 0) 70%
+  );
+  width: 100%;
+  height: 30px;
 }

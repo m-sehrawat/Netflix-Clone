@@ -9,11 +9,15 @@ import { useState } from 'react';
 
 const ListItem = props => {
   const [isHovered, setIsHovered] = useState(false);
-
   console.log(props.data);
-
   const trailer =
     'https://player.vimeo.com/external/371433846.sd.mp4?s=236da2f3c0fd273d2c6d9a064f3ae35579b2bbdf&profile_id=139&oauth2_token_id=57447761';
+
+  function textShorten(string, maxLength) {
+    return string?.length > maxLength
+      ? string.substring(0, maxLength) + ' ...'
+      : string;
+  }
   return (
     <div
       className="listItem"
@@ -41,9 +45,12 @@ const ListItem = props => {
             <div className="itemInfoTop">
               <span>1h 14m</span>
               <span className="limit">U/A 16+</span>
-              <span>{props.data.release_date}</span>
+              <span>
+                {props.data.release_date || props.data.first_air_date}
+              </span>
             </div>
-            <div className="desc">Lorem Ipsum is simply dummy text</div>
+            <div>{props.data.name || props.data.title}</div>
+            <div className="desc">{textShorten(props.data.overview, 100)}</div>
             <div className="genre">Action - Drama</div>
           </div>
         </>
