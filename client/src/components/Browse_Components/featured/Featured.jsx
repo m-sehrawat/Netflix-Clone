@@ -47,7 +47,6 @@ const Featured = ({ type }) => {
   function genreSelector(event) {
     setGenre(event.target.value);
   }
-  console.log(genre);
   return (
     <div className="featured">
       {type && (
