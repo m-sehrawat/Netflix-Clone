@@ -5,13 +5,30 @@ import {
   Add,
 } from '@mui/icons-material';
 import './listItem.scss';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
+import ReactPlayer from 'react-player';
+import axios from 'axios';
 
 const ListItem = props => {
   const [isHovered, setIsHovered] = useState(false);
+  const [key, setKey] = useState('');
   console.log(props.data);
-  const trailer =
-    'https://player.vimeo.com/external/371433846.sd.mp4?s=236da2f3c0fd273d2c6d9a064f3ae35579b2bbdf&profile_id=139&oauth2_token_id=57447761';
+
+  // useEffect(() => {
+  //   async function getMovies() {
+  //     let res = await axios.get(
+  //       `https://api.themoviedb.org/3/movie/${127571}/videos?api_key=9e820f10bac6b6a1aa311da64df90958&language=en-US&append_to_response=videos`
+  //     );
+
+  //     let result = await res.data.results[0].key;
+  //     setKey(result);
+  //   }
+  //   getMovies();
+  // }, [props.data.id]);
+
+  // console.log(key);
+  // const trailer =
+  //   'https://player.vimeo.com/external/371433846.sd.mp4?s=236da2f3c0fd273d2c6d9a064f3ae35579b2bbdf&profile_id=139&oauth2_token_id=57447761';
 
   function textShorten(string, maxLength) {
     return string?.length > maxLength
@@ -34,7 +51,18 @@ const ListItem = props => {
       />
       {isHovered && (
         <>
-          <video src={trailer} autoPlay={true} loop />
+          {/* <video src={trailer} autoPlay={true} loop /> */}
+          <ReactPlayer
+            url={`https://www.youtube.com/watch?v=${key}`}
+            width="100%"
+            height="100%"
+            muted="true"
+            config={{
+              youtube: {
+                playerVars: { showinfo: 1, autoplay: 1, controls: 1 },
+              },
+            }}
+          />
           <div className="itemInfo">
             <div className="icons">
               <PlayArrow className="icon" />

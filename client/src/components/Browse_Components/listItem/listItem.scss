@@ -23,9 +23,10 @@
       display: none;
     }
 
-    video {
+    .player {
       border-radius: 5px;
       height: 100%;
+      width: 100%;
       object-fit: cover;
     }
 
