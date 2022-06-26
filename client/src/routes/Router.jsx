@@ -5,7 +5,6 @@ import { Landing } from '../pages/Landing/Landing';
 import MyAccount from '../pages/MyAccount/MyAccount';
 import Watch from '../pages/Watch/Watch';
 import Plans from '../pages/Plans/Plans';
-
 export const Router = () => {
   return (
     <>

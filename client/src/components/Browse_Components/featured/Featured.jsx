@@ -9,6 +9,7 @@ const Featured = ({ type }) => {
   const [movie, setMovie] = useState([]);
   const [allGenre, setAllGenre] = useState([]);
   const [genre, setGenre] = useState('Genres');
+  const [movieKey, setMovieKey] = useState('');
 
   //Genre Request
   useEffect(() => {
@@ -35,6 +36,13 @@ const Featured = ({ type }) => {
         ]
       );
     }
+    // async function getVideo() {
+    //   let res = await axios.get(
+    //     `https://api.themoviedb.org/3/movie/${movie.id}/videos?api_key=9e820f10bac6b6a1aa311da64df90958&language=en-US&append_to_response=videos`
+    //   );
+    //   let result = await res.data.results[0].key;
+    //   setMovieKey(result);
+    // }
     fetchData();
   }, [genre]);
 
@@ -47,6 +55,8 @@ const Featured = ({ type }) => {
   function genreSelector(event) {
     setGenre(event.target.value);
   }
+
+  // console.log(movieKey);
   return (
     <div className="featured">
       {type && (

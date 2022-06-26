@@ -12,19 +12,18 @@ import axios from 'axios';
 const ListItem = props => {
   const [isHovered, setIsHovered] = useState(false);
   const [key, setKey] = useState('');
-  console.log(props.data);
 
-  // useEffect(() => {
-  //   async function getMovies() {
-  //     let res = await axios.get(
-  //       `https://api.themoviedb.org/3/movie/${127571}/videos?api_key=9e820f10bac6b6a1aa311da64df90958&language=en-US&append_to_response=videos`
-  //     );
+  useEffect(() => {
+    async function getMovies() {
+      let res = await axios.get(
+        `https://api.themoviedb.org/3/${props.type}/${props.data.id}/videos?api_key=9e820f10bac6b6a1aa311da64df90958&language=en-US&append_to_response=videos`
+      );
 
-  //     let result = await res.data.results[0].key;
-  //     setKey(result);
-  //   }
-  //   getMovies();
-  // }, [props.data.id]);
+      let result = await res.data.results[0].key;
+      setKey(result);
+    }
+    getMovies();
+  }, [props.data.id, props.type]);
 
   // console.log(key);
   // const trailer =

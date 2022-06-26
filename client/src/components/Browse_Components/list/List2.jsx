@@ -36,17 +36,21 @@ function SamplePrevArrow(props) {
 const List2 = props => {
   const [type, setType] = useState('');
   const [data, setData] = useState([]);
+  const [movieOrTv, setMovieOrTv] = useState('movie');
+
+  //Slider Settings
   const settings = {
     className: 'slider variable-width',
     dots: false,
     infinite: true,
     speed: 1000,
-    slidesToShow: 3,
-    slidesToScroll: 3,
+    slidesToShow: 6,
+    slidesToScroll: 6,
     // adaptiveHeight: true,
     nextArrow: <SampleNextArrow />,
     prevArrow: <SamplePrevArrow />,
   };
+
   //Fetching Slider API
   useEffect(() => {
     if (props.type === 'trending') {
@@ -54,13 +58,13 @@ const List2 = props => {
       fetchData(requests.fetchTrending);
     } else if (props.type === 'originals') {
       setType('Netflix Originals');
+      setMovieOrTv('tv');
       fetchData(requests.fetchOriginals);
     } else {
       setType('Top Rated');
       fetchData(requests.fetchTopRated);
     }
   }, []);
-
   async function fetchData(url) {
     const req = await axios.get(`https://api.themoviedb.org/3${url}`);
     setData(req.data.results);
@@ -71,7 +75,7 @@ const List2 = props => {
       <span className="listTitle2"> {type} </span>
       <Slider {...settings}>
         {data.map(elem => (
-          <ListItem key={elem.id} data={elem} />
+          <ListItem key={elem.id} data={elem} type={movieOrTv} />
         ))}
       </Slider>
     </div>
