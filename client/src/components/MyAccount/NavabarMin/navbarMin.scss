@@ -6,6 +6,9 @@
   background-color: var(--main-color);
   height: 70px;
   padding: 20px 40px;
+  .logo {
+    height: 100%;
+  }
   .profile {
     display: flex;
     gap: 10px;
