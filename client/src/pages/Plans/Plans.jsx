@@ -1,21 +1,20 @@
 import React from 'react';
-import {
-  Tabs,
-  TabList,
-  Tab,
-  Button,
-  Radio,
-  RadioGroup,
-} from '@chakra-ui/react';
+import { Tabs, TabList, Tab, Button } from '@chakra-ui/react';
 import './plans.scss';
 import axios from 'axios';
 import Footer from '../../components/Browse_Components/footer/Footer';
 import NavbarMin from '../../components/MyAccount/NavabarMin/NavbarMin';
 import { useState, useEffect } from 'react';
+import { Link } from 'react-router-dom';
+import { getItem } from '../../utils/localStorage.js';
 
 const Plans = () => {
   const [prices, setPrices] = useState([]);
   const [who, setWho] = useState(``);
+
+  //Best to use Redux
+  const user = getItem('user');
+  const token = getItem('token');
 
   useEffect(() => {
     fetchPrices();
@@ -44,8 +43,25 @@ const Plans = () => {
     return 'Our best video quality in Ultra HD (4K) and HDR. Watch on any phone, tablet, computer or TV.';
   };
 
-  function handleSubscription() {
-    console.log(who);
+  async function handleSubscription() {
+    console.log(user, token);
+    console.log(who.id);
+    if (user && token) {
+      const { data } = await axios.post(
+        '/create-subscription',
+        {
+          price: who.id,
+        },
+        {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        }
+      );
+      window.open(data);
+    } else {
+      // window.open('/login');
+    }
   }
 
   return (
@@ -53,7 +69,8 @@ const Plans = () => {
       <NavbarMin />
       <div className="tabs">
         <h1 className="header">Change Streaming Plan</h1>
-        <Tabs defaultIndex={5}>
+
+        <Tabs defaultIndex={''}>
           <TabList style={{ flexDirection: 'column', gap: '20px' }}>
             {prices.map(price => (
               <Tab key={price.id} onClick={() => handleClick(price)}>
@@ -80,9 +97,15 @@ const Plans = () => {
         </div>
       </div>
       <div className="toPayment">
-        <Button colorScheme="blue" onClick={handleSubscription}>
+        {/* <Link to="/"> */}
+        <Button
+          colorScheme="blue"
+          disabled={!who ? true : false}
+          onClick={handleSubscription}
+        >
           Continue
         </Button>
+        {/* </Link> */}
         <Button colorScheme="gray">Go Back</Button>
       </div>
       <hr />
