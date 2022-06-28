@@ -1,19 +1,5 @@
-.settings {
-  display: flex;
-  padding: 40px 0;
-  .heading {
-    color: gray;
-    font-size: 20px;
-  }
-  .text {
-    margin-left: 250px;
-    display: flex;
-    flex-direction: column;
-    color: #0073e6;
-    span:hover {
-      cursor: pointer;
-      text-decoration: underline;
-      text-underline-offset: 3px;
-    }
-  }
+span:hover {
+  cursor: pointer;
+  text-decoration: underline;
+  text-underline-offset: 3px;
 }
