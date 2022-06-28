@@ -10,6 +10,7 @@ const {
   prices,
   createSubscription,
   subscriptionStatus,
+  subscriptions,
 } = require("./controllers/stripe.controller");
 const { requireSignin } = require("./middlewares");
 
@@ -20,5 +21,6 @@ app.post("/login", login);
 app.get("/prices", prices);
 app.post("/create-subscription", requireSignin, createSubscription);
 app.get("/subscription-status", requireSignin, subscriptionStatus);
+app.get("/subscriptions", requireSignin, subscriptions);
 
 module.exports = app;
