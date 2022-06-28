@@ -4,7 +4,7 @@ import * as ReactDOM from 'react-dom/client';
 import App from './App';
 import 'swiper/css/bundle';
 import { BrowserRouter } from 'react-router-dom';
-import { Provider as ReduxProvider } from 'react-redux';
+import { Provider as ReduxProvider, useSelector } from 'react-redux';
 import { store } from './redux/store/store';
 import axios from 'axios';
 

@@ -46,4 +46,24 @@ const subscriptionStatus = async (req, res) => {
   }
 };
 
-module.exports = { prices, createSubscription, subscriptionStatus };
+const subscriptions = async (req, res) => {
+  try {
+    const user = await User.findById(req.user.user._id);
+    const subscriptions = await stripe.subscriptions.list({
+      customer: user.stripe_customer_id,
+      status: "all",
+      expand: ["data.default_payment_method"],
+    });
+
+    res.json(subscriptions);
+  } catch (err) {
+    console.log(err);
+  }
+};
+
+module.exports = {
+  prices,
+  createSubscription,
+  subscriptionStatus,
+  subscriptions,
+};
