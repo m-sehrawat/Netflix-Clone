@@ -18,6 +18,7 @@ const Member = () => {
           Cancel Membership
         </Button>
       </GridItem>
+
       <GridItem
         colSpan={2}
         display="grid"
@@ -31,6 +32,7 @@ const Member = () => {
         <span>Phone : 8900741377</span>
         <span className="r">Change Phone Number</span>
       </GridItem>
+
       <GridItem
         colSpan={2}
         display="grid"
@@ -43,6 +45,7 @@ const Member = () => {
         <span></span>
         <span className="r">Billing Details</span>
       </GridItem>
+
       <GridItem
         colSpan={2}
         display="flex"

@@ -1,19 +1,11 @@
 .footer {
-  color: white;
-  width: 850px;
-  margin: auto;
-  margin-top: 50px;
-  margin-bottom: 50px;
   .icons {
-    display: flex;
     font-size: 25px;
-    gap: 40px;
     cursor: pointer;
   }
   .links {
-    margin-top: 10px;
-    display: grid;
     grid-template-columns: auto auto auto auto;
+    flex-direction: column;
     justify-content: space-between;
     span {
       padding: 10px;
