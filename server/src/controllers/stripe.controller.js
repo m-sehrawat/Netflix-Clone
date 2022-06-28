@@ -10,10 +10,40 @@ const prices = async (req, res) => {
 const createSubscription = async (req, res) => {
   try {
     const user = await User.findById(req.user.user._id);
-    // console.log(user);
+    const session = await stripe.checkout.sessions.create({
+      mode: "subscription",
+      payment_method_types: ["card"],
+      line_items: [{ price: req.body.price, quantity: 1 }],
+      customer: user.stripe_customer_id,
+      success_url: process.env.STRIPE_SUCCESS_URL,
+      cancel_url: process.env.STRIPE_CANCEL_URL,
+    });
+    console.log(session);
+    res.json(session.url);
   } catch (err) {
     console.log(err.message);
   }
 };
 
-module.exports = { prices, createSubscription };
+const subscriptionStatus = async (req, res) => {
+  try {
+    const user = await User.findById(req.user.user._id);
+    const subscriptions = await stripe.subscriptions.list({
+      customer: user.stripe_customer_id,
+      status: "all",
+      expand: ["data.default_payment_method"],
+    });
+    const updated = await User.findByIdAndUpdate(
+      user._id,
+      {
+        subscriptions: subscriptions.data,
+      },
+      { new: true }
+    );
+    res.json(updated);
+  } catch (err) {
+    console.log(err);
+  }
+};
+
+module.exports = { prices, createSubscription, subscriptionStatus };
