@@ -16,7 +16,7 @@ const Plan = () => {
         Premium
         <span className="qualityLogo">ULTRA HD</span>
       </span>
-      <span>Change Plan</span>
+      <span className="changePlan">Change Plan</span>
     </Flex>
   );
 };

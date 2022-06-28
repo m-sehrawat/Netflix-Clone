@@ -14,6 +14,7 @@ const Settings = () => {
         ml={['0px', '250px']}
         gap="10px"
         // align={['center', 'left']}
+        className="settings"
       >
         <span>Test Participation</span>
         <span>Manage download devices</span>
