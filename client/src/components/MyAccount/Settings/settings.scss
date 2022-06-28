@@ -1,5 +1,7 @@
-span:hover {
-  cursor: pointer;
-  text-decoration: underline;
-  text-underline-offset: 3px;
+.settings {
+  span:hover {
+    cursor: pointer;
+    text-decoration: underline;
+    text-underline-offset: 3px;
+  }
 }
