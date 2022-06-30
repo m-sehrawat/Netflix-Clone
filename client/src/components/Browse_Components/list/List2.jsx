@@ -38,6 +38,7 @@ const List2 = props => {
   const [data, setData] = useState([]);
   const [movieOrTv, setMovieOrTv] = useState('movie');
 
+  let randomSlide = Math.floor(Math.random() * 3);
   //Slider Settings
   const settings = {
     className: 'slider variable-width',
@@ -46,15 +47,44 @@ const List2 = props => {
     speed: 1000,
     slidesToShow: 3,
     slidesToScroll: 3,
+    initialSlide: randomSlide,
     nextArrow: <SampleNextArrow />,
     prevArrow: <SamplePrevArrow />,
+    responsive: [
+      {
+        breakpoint: 1024,
+        settings: {
+          slidesToShow: 3,
+          slidesToScroll: 3,
+        },
+      },
+      {
+        breakpoint: 600,
+        settings: {
+          slidesToShow: 2,
+          slidesToScroll: 2,
+          initialSlide: 2,
+        },
+      },
+      {
+        breakpoint: 400,
+        settings: {
+          slidesToShow: 1,
+          slidesToScroll: 1,
+        },
+      },
+    ],
   };
 
   //Fetching Slider API
   useEffect(() => {
     async function fetchData(url) {
-      const req = await axios.get(`https://api.themoviedb.org/3${url}`);
-      setData(req.data.results);
+      try {
+        const req = await axios.get(`https://api.themoviedb.org/3${url}`);
+        setData(req.data.results);
+      } catch (error) {
+        console.log(error);
+      }
     }
     if (props.type === 'trending') {
       setType('Trending Now');
@@ -65,7 +95,6 @@ const List2 = props => {
       fetchData(requests.fetchOriginals);
     } else {
       setType('Top Rated');
-      console.log(requests.fetchTopRated);
       fetchData(requests.fetchTopRated);
     }
   }, [props.type]);

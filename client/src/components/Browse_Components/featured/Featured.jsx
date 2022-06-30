@@ -14,6 +14,9 @@ const Featured = ({ type }) => {
   const [youtubeKey, setYouTubeKey] = useState(`pt81CJcWZy8`);
   const [showVideo, setShowVideo] = useState(false);
 
+  window.YTConfig = {
+    host: 'https://www.youtube.com',
+  };
   const opts = {
     height: `100%`,
     width: '100%',
@@ -69,8 +72,15 @@ const Featured = ({ type }) => {
         let request = await axios.get(
           `https://api.themoviedb.org/3/movie/${movie.id}/videos?api_key=${API_KEY}&language=en-US`
         );
-        console.log(`REQUSTED VIDEO DATA =>`, request.data);
-        setYouTubeKey(request.data.results[1].key);
+        // console.log(`REQUSTED VIDEO DATA =>`, request.data);
+        // console.log(
+        //   'RREQUSTED VIDEO DATA KEY =>',
+        //   request.data.results.filter(data => data.type === 'Trailer')
+        // );
+        // setYouTubeKey(request.data.results[0].key);
+        setYouTubeKey(
+          request.data.results.filter(data => data.type === 'Trailer')[0].key
+        );
       }
     }
     fetchVideo();
@@ -93,6 +103,8 @@ const Featured = ({ type }) => {
       setShowVideo(true);
     }, 3000);
   }, [genre]);
+
+  console.log('MOVIE =>', movie);
 
   return (
     <Box className="featured" height={['100%', '90vh']}>
