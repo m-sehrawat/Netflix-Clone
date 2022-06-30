@@ -44,15 +44,18 @@ const List2 = props => {
     dots: false,
     infinite: true,
     speed: 1000,
-    slidesToShow: 6,
-    slidesToScroll: 6,
-    // adaptiveHeight: true,
+    slidesToShow: 3,
+    slidesToScroll: 3,
     nextArrow: <SampleNextArrow />,
     prevArrow: <SamplePrevArrow />,
   };
 
   //Fetching Slider API
   useEffect(() => {
+    async function fetchData(url) {
+      const req = await axios.get(`https://api.themoviedb.org/3${url}`);
+      setData(req.data.results);
+    }
     if (props.type === 'trending') {
       setType('Trending Now');
       fetchData(requests.fetchTrending);
@@ -62,13 +65,10 @@ const List2 = props => {
       fetchData(requests.fetchOriginals);
     } else {
       setType('Top Rated');
+      console.log(requests.fetchTopRated);
       fetchData(requests.fetchTopRated);
     }
-  }, []);
-  async function fetchData(url) {
-    const req = await axios.get(`https://api.themoviedb.org/3${url}`);
-    setData(req.data.results);
-  }
+  }, [props.type]);
 
   return (
     <div className="list2">

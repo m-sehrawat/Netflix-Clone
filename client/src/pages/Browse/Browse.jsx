@@ -9,9 +9,9 @@ const Browse = () => {
     <div className="browse">
       <Navbar />
       <Featured type="movie" />
-      {/* <List2 type="trending" /> */}
+      <List2 type="trending" />
       {/* <List2 type="originals" /> */}
-      <List2 type="topRated" />
+      {/* <List2 type="topRated" /> */}
       <Footer />
     </div>
   );

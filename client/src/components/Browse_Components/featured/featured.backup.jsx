@@ -1,34 +1,23 @@
 import { InfoOutlined, PlayArrow } from '@mui/icons-material';
-import AddIcon from '@mui/icons-material/Add';
 import './featured.scss';
 import { useState, useEffect } from 'react';
 import axios from '../../../API/axios';
+import ReactPlayer from 'react-player';
 import YouTube from 'react-youtube';
 import { requests, API_KEY } from '../../../API/Requests';
-import { Box, Button, Flex, Image, Select, Stack } from '@chakra-ui/react';
 
 const Featured = ({ type }) => {
   const [movie, setMovie] = useState([]);
   const [allGenre, setAllGenre] = useState([]);
   const [genre, setGenre] = useState('Genres');
   const [youtubeKey, setYouTubeKey] = useState(`pt81CJcWZy8`);
-  const [showVideo, setShowVideo] = useState(false);
 
   const opts = {
-    height: `100%`,
-    width: '100%',
+    height: '390',
+    width: '640',
     playerVars: {
       // https://developers.google.com/youtube/player_parameters
-      autoplay: 1,
-      disablekb: 1,
-      modestbranding: 1,
-      controls: 0,
-      showinfo: 0,
-      end: 30,
-      rel: 0,
-      fs: 0,
-      playlist: youtubeKey,
-      loop: 0,
+      autoplay: 0,
     },
   };
 
@@ -58,7 +47,6 @@ const Featured = ({ type }) => {
       );
     }
     fetchData();
-    setShowVideo(false);
   }, [genre]);
 
   //Based on Current Movie Video Request
@@ -70,11 +58,13 @@ const Featured = ({ type }) => {
           `https://api.themoviedb.org/3/movie/${movie.id}/videos?api_key=${API_KEY}&language=en-US`
         );
         console.log(`REQUSTED VIDEO DATA =>`, request.data);
-        setYouTubeKey(request.data.results[1].key);
+        setYouTubeKey(request.data.results[0].key);
       }
     }
     fetchVideo();
   }, [movie]);
+
+  console.log(`YOUTUBE KEY =>`, youtubeKey);
 
   //Extras ---------------------------------------------
   function textShorten(string, maxLength) {
@@ -87,26 +77,12 @@ const Featured = ({ type }) => {
     setGenre(event.target.value);
   }
 
-  //Display video on Each mounting
-  useEffect(() => {
-    setTimeout(() => {
-      setShowVideo(true);
-    }, 3000);
-  }, [genre]);
-
   return (
-    <Box className="featured" height={['100%', '90vh']}>
+    <div className="featured">
       {type && (
-        <Flex className="category" left={['80px', '50px']} gap="10">
+        <div className="category">
           <span>{type === 'movie' ? 'Movies' : 'TV shows'}</span>
-          <Select
-            className="genreSelect"
-            size={['xs', 'sm']}
-            name="genre"
-            id="genre"
-            bg={`var(--main-color)`}
-            onChange={genreSelector}
-          >
+          <select name="genre" id="genre" onChange={genreSelector}>
             <option>Genres</option>
             {allGenre.map(genre => {
               return (
@@ -115,67 +91,34 @@ const Featured = ({ type }) => {
                 </option>
               );
             })}
-          </Select>
-        </Flex>
+          </select>
+        </div>
       )}
-      <Box h="100%" display={['none', 'block']}>
-        {showVideo ? (
-          <YouTube
-            className="splash"
-            videoId={youtubeKey}
-            opts={opts}
-            onEnd={() => setShowVideo(false)}
-          />
-        ) : (
-          <Image
-            className="splash"
-            src={`https://image.tmdb.org/t/p/original/${movie?.backdrop_path}`}
-            alt=""
-          />
-        )}
-      </Box>
+      <img
+        src={`https://image.tmdb.org/t/p/original/${movie?.backdrop_path}`}
+        alt=""
+      />
+      <YouTube videoId={youtubeKey} opts={opts} />
 
-      <Flex
-        className="info"
-        direction="column"
-        position={['', 'absolute']}
-        width={['100%', '35%']}
-        left={['0px', '50px']}
-      >
-        <Image
+      <div className="info">
+        <img
           src={`https://image.tmdb.org/t/p/original/${movie?.poster_path}`}
           alt=""
-          width={['100%', '200px']}
         />
-        <Flex className="text" display={['none', 'flex']}>
-          <span className="name">{movie.name || movie.title}</span>
-          <span className="description">
-            {textShorten(movie.overview, 150)}
-          </span>
-        </Flex>
-
-        <Flex
-          direction="row"
-          gap="20px"
-          p="10px"
-          justify="space-between"
-          maxWidth="400px"
-        >
-          <Button className="add a">
-            <AddIcon />
-            <span>My List</span>
-          </Button>
-          <Button className="play a">
+        <span className="name">{movie.name || movie.title}</span>
+        <span className="description">{textShorten(movie.overview, 150)}</span>
+        <div className="buttons">
+          <button className="play">
             <PlayArrow />
             <span>Play</span>
-          </Button>
-          <Button className="more">
+          </button>
+          <button className="more">
             <InfoOutlined />
             <span>More Info</span>
-          </Button>
-        </Flex>
-      </Flex>
-    </Box>
+          </button>
+        </div>
+      </div>
+    </div>
   );
 };
 
