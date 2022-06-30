@@ -5,7 +5,7 @@ import { useState, useEffect } from 'react';
 import axios from '../../../API/axios';
 import YouTube from 'react-youtube';
 import { requests, API_KEY } from '../../../API/Requests';
-import { Box, Button, Flex, Image, Select, Stack } from '@chakra-ui/react';
+import { Box, Button, Flex, Image, Select } from '@chakra-ui/react';
 
 const Featured = ({ type }) => {
   const [movie, setMovie] = useState([]);
@@ -104,7 +104,7 @@ const Featured = ({ type }) => {
     }, 3000);
   }, [genre]);
 
-  console.log('MOVIE =>', movie);
+  // console.log('MOVIE =>', movie);
 
   return (
     <Box className="featured" height={['100%', '90vh']}>
