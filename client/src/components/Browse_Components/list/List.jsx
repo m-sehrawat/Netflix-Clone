@@ -6,7 +6,7 @@ import {
   ArrowForwardIosOutlined,
 } from '@mui/icons-material';
 import ListItem from '../listItem/ListItem';
-import './list2.scss';
+import './list.scss';
 import '../listItem/listItem.scss';
 import axios from 'axios';
 import { requests } from '../../../API/Requests';
@@ -33,7 +33,7 @@ function SamplePrevArrow(props) {
   );
 }
 
-const List2 = props => {
+const List = props => {
   const [type, setType] = useState('');
   const [data, setData] = useState([]);
   const [movieOrTv, setMovieOrTv] = useState('movie');
@@ -83,7 +83,7 @@ const List2 = props => {
         const req = await axios.get(`https://api.themoviedb.org/3${url}`);
         setData(req.data.results);
       } catch (error) {
-        console.log(error);
+        // console.log(error);
       }
     }
     if (props.type === 'trending') {
@@ -111,4 +111,4 @@ const List2 = props => {
   );
 };
 
-export default List2;
+export default List;

@@ -1,6 +1,6 @@
 import Navbar from '../../components/Browse_Components/navbar/Navbar';
 import Featured from '../../components/Browse_Components/featured/Featured';
-import List2 from '../../components/Browse_Components/list/List2';
+import List from '../../components/Browse_Components/list/List';
 import Footer from '../../components/Browse_Components/footer/Footer';
 import './browse.scss';
 
@@ -9,9 +9,9 @@ const Browse = () => {
     <div className="browse">
       <Navbar />
       <Featured type="movie" />
-      {/* <List2 type="trending" /> */}
-      {/* <List2 type="originals" /> */}
-      {/* <List2 type="topRated" /> */}
+      <List type="trending" />
+      <List type="originals" />
+      <List type="topRated" />
       <Footer />
     </div>
   );

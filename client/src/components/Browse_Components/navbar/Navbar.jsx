@@ -30,7 +30,7 @@ const Navbar = () => {
 
   return (
     <Box className={isScrolled ? 'navbar scrolled' : `navbar`}>
-      <Flex className="container">
+      <Flex className="container" height={['60px', '70px']}>
         <Flex className="left">
           <Image
             src="https://www.edigitalagency.com.au/wp-content/uploads/netflix-logo-png-large.png"
